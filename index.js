@@ -134,7 +134,7 @@ async function init() {
         // win
         if(allRight) {
             // debug
-            console.log("win")
+            // console.log("win")
             // add class winner in the brand to do animation
             document.querySelector(".brand").classList.add("winner");
             document.querySelector(".container").classList.add("hidden"); // hide border
@@ -145,9 +145,10 @@ async function init() {
         // check if user used all the number of guesses he had
         } else if (currentRow === NUMBER_OF_GUESSES) {
             // debug if he did print he lost
-            console.log(`you lost, the correct word was ${word}`);
+            // console.log(`you lost, the correct word was ${word}`);
             document.querySelector(".container").classList.add("hidden"); // hide border
             document.getElementById("lose-message").classList.remove("hidden"); // show message
+            document.getElementById("correct-word").innerText = word.toUpperCase();
             // done mark game as done
             done = true;
         }
