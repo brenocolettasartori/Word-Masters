@@ -75,4 +75,12 @@
     margin-top: 50px;
     color: green;
     font-weight: bold;
-  }
+}
+
+#lose-message {
+    font-size: 3rem;
+    text-align: center;
+    margin-top: 50px;
+    color: red;
+    font-weight: bold;
+}

@@ -137,8 +137,8 @@ async function init() {
             console.log("win")
             // add class winner in the brand to do animation
             document.querySelector(".brand").classList.add("winner");
-            document.querySelector(".container").classList.add("hidden"); // esconde o tabuleiro
-            document.getElementById("win-message").classList.remove("hidden"); // mostra a mensagem
+            document.querySelector(".container").classList.add("hidden"); // hide border
+            document.getElementById("win-message").classList.remove("hidden"); // show message
             // done mark game as done 
             done = true;
         // lose
@@ -146,6 +146,8 @@ async function init() {
         } else if (currentRow === NUMBER_OF_GUESSES) {
             // debug if he did print he lost
             console.log(`you lost, the correct word was ${word}`);
+            document.querySelector(".container").classList.add("hidden"); // hide border
+            document.getElementById("lose-message").classList.remove("hidden"); // show message
             // done mark game as done
             done = true;
         }
