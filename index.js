@@ -3,7 +3,7 @@ const WORD_LENGTH = 5;
 let currentGuess = '';
 let currentRow = 0;
 const letters = document.querySelectorAll(".game-letter");
-const loadingDiv = document.querySelectorAll(".loading")
+const loadingDiv = document.querySelector(".loading")
 let done = false;
 let isLoading = true;
 
@@ -14,6 +14,7 @@ async function init() {
     word = fetchedWord.toUpperCase();
     const wordParts = word.split("");
     isLoading = false;
+    setLoading(isLoading)
     console.log("Palavra do dia:", word);
 
 
@@ -45,6 +46,8 @@ async function init() {
             return;
         }
 
+        isLoading = true;
+        setLoading(isLoading);
         // check the API for valid word
         const res = await fetch("https://words.dev-apis.com/validate-word", {
             // sending data to browser - post
@@ -60,6 +63,8 @@ async function init() {
             // await res.json() return {validWord: true} instead of {"validWord": true}
             // so javascript can understand
         const { validWord } = await res.json();
+        isLoading = false;
+        setLoading(isLoading)
 
         if(!validWord) {
             // if isn't validWord call the function to mark invalid word
@@ -139,15 +144,17 @@ async function init() {
             document.querySelector(".brand").classList.add("winner");
             document.querySelector(".container").classList.add("hidden"); // hide border
             document.getElementById("win-message").classList.remove("hidden"); // show message
+            document.getElementById("win-message").style.display = "flex";
             // done mark game as done 
             done = true;
         // lose
         // check if user used all the number of guesses he had
         } else if (currentRow === NUMBER_OF_GUESSES) {
-            // debug if he did print he lost
+            // debug if he did, print he lost
             // console.log(`you lost, the correct word was ${word}`);
             document.querySelector(".container").classList.add("hidden"); // hide border
             document.getElementById("lose-message").classList.remove("hidden"); // show message
+            document.getElementById("lose-message").style.display = "flex";
             document.getElementById("correct-word").innerText = word.toUpperCase();
             // done mark game as done
             done = true;

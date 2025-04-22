@@ -2,37 +2,40 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    background: linear-gradient(275deg, #ffe09f, #ffefbe);
 }
 
 .navbar {
-    border-bottom: 3px solid black;
+    border-bottom: 10px inset #43291b;
     padding: 5px;
     text-align: center;
     margin-bottom: 0;
 }
 
 .brand {
-    font-size: 56px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    font-size: 66px;
+    color: #43291b;
 }
 
 .hidden {
     visibility: hidden;
   }
 
-.loading {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .container {
     max-width: 400px;
     width: 100%;
-    margin: 40px auto;
+    margin: 130px auto;
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
     row-gap: 10px;
     column-gap: 10px;
+    background-color: transparent;
 }
 
 .game-letter {
@@ -40,7 +43,8 @@
     width: 45px;
     font-size: 30px;
     text-transform: uppercase;
-    border: 3px solid #ccc;
+    border: 3px solid #43291b;
+    border-radius: 8px;
     font-weight: bold;
     display: flex;
     align-items: center;
@@ -69,18 +73,109 @@
     animation: flash 1s;
 }
 
-#win-message {
-    font-size: 3rem;
-    text-align: center;
-    margin-top: 50px;
-    color: green;
-    font-weight: bold;
-}
-
 #lose-message {
     font-size: 3rem;
     text-align: center;
-    margin-top: 50px;
-    color: red;
     font-weight: bold;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: rainbow-l 4s infinite linear;
 }
+
+#win-message {
+    font-size: 3rem;
+    text-align: center;
+    font-weight: bold;
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    animation: rainbow-w 4s infinite linear;
+}
+
+img {
+    border-radius: 12px;
+    display: inline-flex;
+    margin-top: 50px;
+}
+
+.loading {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    left: 46%;
+    top: 20%;
+    width: 120px;
+    height: 120px;
+    border: 7px solid;
+    border-color: black transparent black transparent;
+    border-radius: 50%;
+    animation: spin 3s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes rainbow-w {
+    100%,
+    0% {
+      color: rgb(22, 224, 15);
+    }
+    17% {
+      color: rgb(139, 221, 32);
+    }
+    34% {
+      color: rgb(58, 168, 36);
+    }
+    51% {
+      color: rgb(127, 255, 0);
+    }
+    68% {
+      color: rgb(0, 255, 0);
+    }
+    85% {
+      color: rgb(0, 255, 127);
+    }
+    100% {
+      color: rgb(1, 87, 37);
+    }
+  }
+
+  @keyframes rainbow-l {
+    100%,
+    0% {
+      color: rgb(194, 43, 43);
+    }
+    17% {
+      color: rgb(170, 47, 47);
+    }
+    34% {
+      color: rgb(230, 15, 15);
+    }
+    51% {
+      color: rgb(209, 46, 46);
+    }
+    68% {
+      color: rgb(156, 34, 18);
+    }
+    85% {
+      color: rgb(151, 30, 30);
+    }
+    100% {
+      color: rgb(255, 0, 0);
+    }
+  }
